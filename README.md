@@ -12,6 +12,9 @@ FlavorMatch is a fun project I wanted to make! It's like Tinder, but for finding
 
 ## Getting Started
 Ready to dive into FlavorMatch? Awesome! Just fire up the app, create your profile (don't worry, we won't judge your love for cheese), and start swiping!
+### If you dont want to create an account, use this account to log in:
+Email: contact@sebh.dk
+Password: testuser123
 
 ## Feedback
 Got ideas to make FlavorMatch even more awesome? Spotted a bug? We want to hear it all! Shoot me a message at contact@sebh.dk and let's chat.
