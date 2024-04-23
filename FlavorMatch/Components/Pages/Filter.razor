@@ -1,0 +1,30 @@
+﻿@using System.Collections.Generic;
+@using System.Linq; // Add this using directive
+@using FlavorMatch.Shared.Models;
+@using Microsoft.EntityFrameworkCore;
+@inject FlavorMatchDbContext DbContext
+@page "/Filter"
+
+<h3>Filter</h3>
+
+@if (Ingredients != null)
+{
+    foreach (var ingredient in Ingredients)
+    {
+        <p>@ingredient.Name</p>
+    }
+}
+else
+{
+    <p>Loading...</p>
+}
+
+@code {
+    List<Ingredients> Ingredients;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Fetch ingredients from the database asynchronously
+        Ingredients = await DbContext.Ingredients.ToListAsync();
+    }
+}
