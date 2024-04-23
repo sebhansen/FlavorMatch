@@ -1,0 +1,6 @@
+@FlavorMatchAPI_HostAddress = http://localhost:5181
+
+GET {{FlavorMatchAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

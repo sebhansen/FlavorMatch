@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlavorMatch", "FlavorMatch\FlavorMatch.csproj", "{798D9F5C-A3E3-4A63-B4EE-A6592BA25847}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlavorMatch", "FlavorMatch\FlavorMatch.csproj", "{798D9F5C-A3E3-4A63-B4EE-A6592BA25847}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlavorMatch.Shared", "ClassLibrary\FlavorMatch.Shared.csproj", "{CFFA7701-6C23-4D41-B11E-7DDB676BDAED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlavorMatchAPI", "FlavorMatchAPI\FlavorMatchAPI.csproj", "{86B332E5-DFA8-4D00-84A4-0A986E289A1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{798D9F5C-A3E3-4A63-B4EE-A6592BA25847}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{798D9F5C-A3E3-4A63-B4EE-A6592BA25847}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{798D9F5C-A3E3-4A63-B4EE-A6592BA25847}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFFA7701-6C23-4D41-B11E-7DDB676BDAED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFFA7701-6C23-4D41-B11E-7DDB676BDAED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFFA7701-6C23-4D41-B11E-7DDB676BDAED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFFA7701-6C23-4D41-B11E-7DDB676BDAED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86B332E5-DFA8-4D00-84A4-0A986E289A1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86B332E5-DFA8-4D00-84A4-0A986E289A1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86B332E5-DFA8-4D00-84A4-0A986E289A1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86B332E5-DFA8-4D00-84A4-0A986E289A1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
