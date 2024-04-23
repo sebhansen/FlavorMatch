@@ -1,4 +1,4 @@
-namespace FlavorMatch_API
+namespace FlavorMatchAPI
 {
     public class WeatherForecast
     {

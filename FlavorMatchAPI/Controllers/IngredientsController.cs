@@ -7,15 +7,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FlavorMatch.Shared.Models;
 
-namespace FlavorMatch_API.Controllers
+namespace FlavorMatchAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class IngredientsController : ControllerBase
     {
-        private readonly FlavorMatchDbContext _context;
+        private readonly FlavorMatchAPIContext _context;
 
-        public IngredientsController(FlavorMatchDbContext context)
+        public IngredientsController(FlavorMatchAPIContext context)
         {
             _context = context;
         }

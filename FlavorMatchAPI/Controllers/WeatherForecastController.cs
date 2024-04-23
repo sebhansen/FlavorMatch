@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace FlavorMatch_API.Controllers
+namespace FlavorMatchAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]

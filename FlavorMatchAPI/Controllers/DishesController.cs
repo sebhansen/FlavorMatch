@@ -7,38 +7,28 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FlavorMatch.Shared.Models;
 
-namespace FlavorMatch_API.Controllers
+namespace FlavorMatchAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class DishesController : ControllerBase
     {
-        private readonly FlavorMatchDbContext _context;
+        private readonly FlavorMatchAPIContext _context;
 
-        public DishesController(FlavorMatchDbContext context)
+        public DishesController(FlavorMatchAPIContext context)
         {
             _context = context;
         }
 
-        // POST: api/Dishes
-        [HttpPost("CreateDish")]
-        public async Task<ActionResult<Dishes>> PostDishes(Dishes dishes)
-        {
-            _context.Dishes.Add(dishes);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetDishes", new { id = dishes.Id }, dishes);
-        }
-
         // GET: api/Dishes
-        [HttpGet("GetDishes")]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<Dishes>>> GetDishes()
         {
             return await _context.Dishes.ToListAsync();
         }
 
         // GET: api/Dishes/5
-        [HttpGet("GetDishById")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Dishes>> GetDishes(int id)
         {
             var dishes = await _context.Dishes.FindAsync(id);
@@ -52,7 +42,8 @@ namespace FlavorMatch_API.Controllers
         }
 
         // PUT: api/Dishes/5
-        [HttpPut("UpdateDish")]
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
         public async Task<IActionResult> PutDishes(int id, Dishes dishes)
         {
             if (id != dishes.Id)
@@ -81,8 +72,19 @@ namespace FlavorMatch_API.Controllers
             return NoContent();
         }
 
+        // POST: api/Dishes
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<Dishes>> PostDishes(Dishes dishes)
+        {
+            _context.Dishes.Add(dishes);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetDishes", new { id = dishes.Id }, dishes);
+        }
+
         // DELETE: api/Dishes/5
-        [HttpDelete("DeleteDish")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDishes(int id)
         {
             var dishes = await _context.Dishes.FindAsync(id);

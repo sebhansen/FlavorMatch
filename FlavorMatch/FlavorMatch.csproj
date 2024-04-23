@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary\FlavorMatch.Shared.csproj" />
-    <ProjectReference Include="..\FlavorMatch-API\FlavorMatchAPI.csproj" />
+    <ProjectReference Include="..\FlavorMatchAPI\FlavorMatchAPI.csproj" />
   </ItemGroup>
 
 </Project>
