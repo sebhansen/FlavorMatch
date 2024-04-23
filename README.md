@@ -1,4 +1,5 @@
-# FlavorMatch
+![FlavorMatchLogo](https://github.com/sebhansen/FlavorMatch/assets/70775633/2d0a9cb7-13fc-4ebf-b10e-b836825cfe80)
+
 
 Hey there, welcome to FlavorMatch - where your taste buds meet their match!
 
