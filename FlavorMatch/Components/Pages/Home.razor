@@ -1,4 +1,6 @@
 ﻿@page "/"
+@rendermode InteractiveServer
+@using Shared.Models
 
 <PageTitle>FlavorMatch</PageTitle>
 
@@ -9,22 +11,35 @@ You can filter for a specific item, for example rice or pasta, as well as choosi
 <div class="text-center">
 	<img src="http://sebh.dk/wp-content/uploads/2024/04/FlavorMatchLogo.png" class="img-fluid" alt="FlavorMatch" />
 	<div class="container d-flex justify-content-center align-items-center" style="width: 540px; height: 400px; background-color: #FFFFFF;">
-		<img src="https://www.allrecipes.com/thmb/FL-xnyAllLyHcKdkjUZkotVlHR8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/46822-indian-chicken-curry-ii-DDMFS-4x3-39160aaa95674ee395b9d4609e3b0988.jpg" class="img-fluid mx-auto" alt="DishName" />	
-	</div>
+		@if (dishes == null)
+		{
+			@*show as loading*@
+			<div class="spinner-border text-primary" role="status">
+				<span class="visually-hidden">Loading...</span>
+			</div>
+		}
+		else 
+		{
+			@* Show the image of the dish *@
+			<img src="@dishes[i].Image" class="img-fluid mx-auto" style="max-width: 530px; max-height: 400px;" alt="@dishes[i].Name" />
+		}
+		</div>
 
+		@* Show the name of the dish *@
 	<div class="container d-flex justify-content-center align-items-center" style="width: 540px; height: 100px; background-color: #FFFFFF;">
-		<h1 class="text" style="color: #25B6FB; ">Chicken Biryani</h1>
+		<h1 class="text" style="color: #25B6FB; flex-wrap:wrap;">@dishes[i].Name</h1>
 	</div>
 
+	@* Like and dislike button *@
 	<div class="row justify-content-center" style="padding-top: 20px;">
 		<div class="row justify-content-center">
 			<div class="col-2" style="padding: 0px 0px;">
-				<button class="btn btn-danger" style="width: 100px; background: none; border: none;">
+				<button style="width: 100px; background: none; border: none; outline:none;" @onclick="Dislike">
 					<img src="http://sebh.dk/wp-content/uploads/2024/04/CrossX.png" class="img-fluid" alt="Dislike" />
 				</button>
 			</div>
 			<div class="col-2" style="padding-block: 0px 0px;">
-				<button class="btn btn-success" style="width: 100px; background: none; border: none;">
+				<button style="width: 100px; background: none; border: none;">
 					<img src="http://sebh.dk/wp-content/uploads/2024/04/GreenHeart.png" class="img-fluid" alt="Like" />
 				</button>
 			</div>
@@ -32,3 +47,57 @@ You can filter for a specific item, for example rice or pasta, as well as choosi
 	</div>
 </div>
 
+
+@code {
+	private int i;
+	private Dishes[]? dishes;
+
+	public void GetDishes()
+	{
+		DishesRepo dishesRepo = new DishesRepo();
+		dishes = dishesRepo.GetDishesArray();
+	}
+
+	protected override void OnInitialized()
+	{
+		GetDishes();
+		i = 0;
+	}
+
+	private void Like()
+	{
+		GetNextDish();
+	}
+
+	private void Dislike()
+	{
+		GetNextDish();
+	}
+
+	private void GetNextDish()
+	{
+		//try in case of out null
+		try 
+		{
+			if (i < dishes.Length - 1)
+			{
+				i++;
+			}
+			else
+			{
+				i = 0;
+			}
+		}
+		catch (Exception e)
+		{
+			Console.WriteLine(e.Message);
+		}
+	}
+
+	private void GetPreviousDish()
+	{
+		i--;
+	}
+
+
+}
