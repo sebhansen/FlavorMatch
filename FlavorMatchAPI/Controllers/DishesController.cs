@@ -72,6 +72,36 @@ namespace FlavorMatchAPI.Controllers
             return NoContent();
         }
 
+        // Add ingredients to a dish
+        [HttpPut("{id}/AddIngredients")]
+        public async Task<IActionResult> AddIngredients(int id, Dishes dishes)
+        {
+            if (id != dishes.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(dishes).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!DishesExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
         // POST: api/Dishes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
