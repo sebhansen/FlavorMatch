@@ -9,10 +9,28 @@
 
 @if (Ingredients != null)
 {
-    foreach (var ingredient in Ingredients)
-    {
-        <p>@ingredient.Name</p>
-    }
+	<div class="container">
+		<div class="row">
+			@foreach (var ingredient in Ingredients)
+			{
+				<div class="col-4">
+					<div class="card justify-content-center" style="width: 18rem; height: 12rem; margin-bottom: 10px;">
+						<img src="@ingredient.Image" class="card-img-top" alt="@ingredient.Name">
+						<div class="card-body">
+							<h5 class="card-title">@ingredient.Name</h5>
+							<p class="card-text">@ingredient.Description</p>
+						</div>
+						@*checkbox to filter*@
+						<div class="form-check">
+							<input class="form-check
+							-input" type="checkbox" value="" id="flexCheckDefault"/>
+							<label class="form-check-label" for="flexCheckDefault"/>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
 }
 else
 {
@@ -20,13 +38,17 @@ else
 }
 
 @code {
-    List<Ingredients> Ingredients;
+    IngredientsRepo ingredientsRepo = new IngredientsRepo();
+    private List<Ingredients>? Ingredients;
+    
 
-    protected override async Task OnInitializedAsync()
-    {
-        // Fetch ingredients from the database asynchronously
-        Ingredients = await DbContext.Ingredients.ToListAsync();
-    }
+	protected override void OnInitialized()
+	{
+		GetIngredients();
+	}
 
-
+    public void GetIngredients()
+	{
+		Ingredients = ingredientsRepo.GetIngredients();
+	}
 }

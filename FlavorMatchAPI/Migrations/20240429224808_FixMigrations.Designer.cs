@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlavorMatchAPI.Migrations
 {
     [DbContext(typeof(FlavorMatchAPIContext))]
-    [Migration("20240425162005_AddForeignKey")]
-    partial class AddForeignKey
+    [Migration("20240429224808_FixMigrations")]
+    partial class FixMigrations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,9 +39,6 @@ namespace FlavorMatchAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("IngredientID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -59,8 +56,6 @@ namespace FlavorMatchAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("IngredientID");
 
                     b.ToTable("Dishes");
                 });
@@ -88,22 +83,6 @@ namespace FlavorMatchAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Ingredients");
-                });
-
-            modelBuilder.Entity("FlavorMatch.Shared.Models.Dishes", b =>
-                {
-                    b.HasOne("FlavorMatch.Shared.Models.Ingredients", "Ingredient")
-                        .WithMany("Dishes")
-                        .HasForeignKey("IngredientID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Ingredient");
-                });
-
-            modelBuilder.Entity("FlavorMatch.Shared.Models.Ingredients", b =>
-                {
-                    b.Navigation("Dishes");
                 });
 #pragma warning restore 612, 618
         }
