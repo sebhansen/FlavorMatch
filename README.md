@@ -16,11 +16,11 @@ FlavorMatch is a fun project I wanted to make! It's like Tinder, but for finding
 Ready to dive into FlavorMatch? Awesome! Just fire up the app, create your profile (don't worry, we won't judge your love for cheese), and start clicking!
 ### If you dont want to create an account, use this account to log in:
 Email: contact@sebh.dk
-Password: Testuser123
+Password: Testuser123!
 #### (!) You will need to be logged in to an account in order to be able to save recipes and filter ingredients!
 
 ## Feedback
 Got ideas to make FlavorMatch even more awesome? Spotted a bug? We want to hear it all! Shoot me a message at contact@sebh.dk and let's chat.
 
 ## WIP
-This project is VERY fresh.
+Work in Progress. My idea with this is to at some point in the future port the frontend to Angular. Maybe even as an app at some point, who knows.
