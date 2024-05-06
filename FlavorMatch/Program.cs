@@ -10,9 +10,6 @@ using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//var connectionString = builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")!;
-//var apiConnectionString = builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")!;
-
 //api connection string
 var APIVaultURL = new Uri("https://flavormatch.vault.azure.net/");
 var secretAPIClient = new SecretClient(APIVaultURL, new DefaultAzureCredential());
