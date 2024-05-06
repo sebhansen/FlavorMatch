@@ -1,3 +1,5 @@
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
 using FlavorMatch.Components;
 using FlavorMatch.Components.Account;
 using FlavorMatch.Data;
@@ -8,8 +10,20 @@ using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")!;
-var apiConnectionString = builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")!;
+//var connectionString = builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")!;
+//var apiConnectionString = builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")!;
+
+//api connection string
+var APIVaultURL = new Uri("https://flavormatch.vault.azure.net/");
+var secretAPIClient = new SecretClient(APIVaultURL, new DefaultAzureCredential());
+KeyVaultSecret APISecret = secretAPIClient.GetSecret("FlavorMatchAPISecret");
+string apiConnectionString = APISecret.Value;
+
+//normal connection string
+var vaultURL = new Uri("https://flavormatch.vault.azure.net/");
+var secretClient = new SecretClient(vaultURL, new DefaultAzureCredential());
+KeyVaultSecret vaultSecret = secretClient.GetSecret("FlavorMatchSecret");
+string connectionString = vaultSecret.Value;
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

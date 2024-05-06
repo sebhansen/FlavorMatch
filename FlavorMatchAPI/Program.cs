@@ -1,13 +1,20 @@
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
 using FlavorMatch.Shared.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING");
+//var connectionString = builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING");
+
+//api connection string
+var apiVaultURL = new Uri("https://flavormatch.vault.azure.net/");
+var secretAPIClient = new SecretClient(apiVaultURL, new DefaultAzureCredential());
+KeyVaultSecret APISecret = secretAPIClient.GetSecret("FlavorMatchAPISecret");
+string connectionString = APISecret.Value;
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
