@@ -17,7 +17,7 @@ Ready to dive into FlavorMatch? Awesome! Just fire up the app, create your profi
 ### If you dont want to create an account, use this account to log in:
 Email: contact@sebh.dk
 Password: Testuser123!
-#### (!) You will need to be logged in to an account in order to be able to save recipes and filter ingredients!
+### (!) You will need to be logged in to an account in order to be able to save recipes and filter ingredients!
 
 ## Feedback
 Got ideas to make FlavorMatch even more awesome? Spotted a bug? We want to hear it all! Shoot me a message at contact@sebh.dk and let's chat.
