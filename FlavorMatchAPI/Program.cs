@@ -7,10 +7,13 @@ using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
 
 //api connection string
-var apiVaultURL = new Uri("https://flavormatch.vault.azure.net/");
-var secretAPIClient = new SecretClient(apiVaultURL, new DefaultAzureCredential());
-KeyVaultSecret APISecret = secretAPIClient.GetSecret("FlavorMatchAPISecret");
-string connectionString = APISecret.Value;
+var apiConnectionString = builder.Configuration.GetConnectionString("APIConnectionString");
+
+//Using Azure Key Vault to store the connection string
+//var apiVaultURL = new Uri("https://flavormatch.vault.azure.net/");
+//var secretAPIClient = new SecretClient(apiVaultURL, new DefaultAzureCredential());
+//KeyVaultSecret APISecret = secretAPIClient.GetSecret("FlavorMatchAPISecret");
+//string connectionString = APISecret.Value;
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -19,7 +22,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<FlavorMatchAPIContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseSqlServer(apiConnectionString));
 
 builder.Services.AddCors(options =>
 {

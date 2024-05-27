@@ -5,7 +5,7 @@ namespace FlavorMatch.Shared.Models
 {
     public class IngredientsRepo
 	{
-		private string connectionString = "Server=tcp:flavormatch.database.windows.net,1433;Initial Catalog=FlavorMatchAPI;Persist Security Info=False;User ID=FlavorMatch;Password=Xde45buf!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;";
+		private string connectionString = "Server=np:\\\\.\\pipe\\LOCALDB#9EE4EA0F\\tsql\\query;Database=FlavorMatchAPI;Integrated Security=true;";
 
 		//Get all ingredients
 		public List<Ingredients> GetIngredients()
