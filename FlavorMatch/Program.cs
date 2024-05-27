@@ -11,16 +11,20 @@ using System.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 //api connection string
-var APIVaultURL = new Uri("https://flavormatch.vault.azure.net/");
-var secretAPIClient = new SecretClient(APIVaultURL, new DefaultAzureCredential());
-KeyVaultSecret APISecret = secretAPIClient.GetSecret("FlavorMatchAPISecret");
-string apiConnectionString = APISecret.Value;
+var apiConnectionString = builder.Configuration.GetConnectionString("APIConnectionString");
+
+//var APIVaultURL = new Uri("https://flavormatch.vault.azure.net/");
+//var secretAPIClient = new SecretClient(APIVaultURL, new DefaultAzureCredential());
+//KeyVaultSecret APISecret = secretAPIClient.GetSecret("FlavorMatchAPISecret");
+//string apiConnectionString = APISecret.Value;
 
 //normal connection string
-var vaultURL = new Uri("https://flavormatch.vault.azure.net/");
-var secretClient = new SecretClient(vaultURL, new DefaultAzureCredential());
-KeyVaultSecret vaultSecret = secretClient.GetSecret("FlavorMatchSecret");
-string connectionString = vaultSecret.Value;
+var connectionString = builder.Configuration.GetConnectionString("IdentityConnectionString");
+
+//var vaultURL = new Uri("https://flavormatch.vault.azure.net/");
+//var secretClient = new SecretClient(vaultURL, new DefaultAzureCredential());
+//KeyVaultSecret vaultSecret = secretClient.GetSecret("FlavorMatchSecret");
+//string connectionString = vaultSecret.Value;
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
