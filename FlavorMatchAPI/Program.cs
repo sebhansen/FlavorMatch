@@ -1,13 +1,19 @@
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
-using FlavorMatch.Shared.Models;
+using FlavorMatch.Shared;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//Database server
+DatabaseConnection db = new DatabaseConnection();
+db.GetDatabaseServer();
+var ConnectionStringServer = db.server;
+
 //api connection string
-var apiConnectionString = builder.Configuration.GetConnectionString("APIConnectionString");
+var apiConnectionStringEnd = builder.Configuration.GetConnectionString("APIConnectionString");
+var apiFullConnectionString = "Server=" + ConnectionStringServer + apiConnectionStringEnd;
 
 //Using Azure Key Vault to store the connection string
 //var apiVaultURL = new Uri("https://flavormatch.vault.azure.net/");
@@ -22,7 +28,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<FlavorMatchAPIContext>(options =>
-    options.UseSqlServer(apiConnectionString));
+    options.UseSqlServer(apiFullConnectionString));
 
 builder.Services.AddCors(options =>
 {

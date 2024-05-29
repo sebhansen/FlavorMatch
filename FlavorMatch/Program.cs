@@ -3,6 +3,7 @@ using Azure.Security.KeyVault.Secrets;
 using FlavorMatch.Components;
 using FlavorMatch.Components.Account;
 using FlavorMatch.Data;
+using FlavorMatch.Shared;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -10,8 +11,14 @@ using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//Database server
+DatabaseConnection db = new DatabaseConnection();
+db.GetDatabaseServer();
+var ConnectionStringServer = db.server;
+
 //api connection string
-var apiConnectionString = builder.Configuration.GetConnectionString("APIConnectionString");
+var apiConnectionStringEnd = builder.Configuration.GetConnectionString("APIConnectionString");
+var apiFullConnectionString = "Server=" + ConnectionStringServer + apiConnectionStringEnd;
 
 //var APIVaultURL = new Uri("https://flavormatch.vault.azure.net/");
 //var secretAPIClient = new SecretClient(APIVaultURL, new DefaultAzureCredential());
@@ -19,7 +26,8 @@ var apiConnectionString = builder.Configuration.GetConnectionString("APIConnecti
 //string apiConnectionString = APISecret.Value;
 
 //normal connection string
-var connectionString = builder.Configuration.GetConnectionString("IdentityConnectionString");
+var idConnectionStringEnd = builder.Configuration.GetConnectionString("IdentityConnectionString");
+var idFullConnectionString = "Server=" + ConnectionStringServer + idConnectionStringEnd;
 
 //var vaultURL = new Uri("https://flavormatch.vault.azure.net/");
 //var secretClient = new SecretClient(vaultURL, new DefaultAzureCredential());
@@ -43,9 +51,9 @@ builder.Services.AddAuthentication(options =>
     .AddIdentityCookies();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseSqlServer(idFullConnectionString));
 builder.Services.AddDbContext<FlavorMatchAPIContext>(options =>
-        options.UseSqlServer(apiConnectionString));
+        options.UseSqlServer(apiFullConnectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)

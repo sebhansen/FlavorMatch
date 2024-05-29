@@ -1,0 +1,1 @@
+np:\\.\pipe\LOCALDB#0FEC28C5\tsql\query 
