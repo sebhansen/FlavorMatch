@@ -22,6 +22,20 @@ You can filter for a specific item, for example rice or pasta, as well as choosi
 		{
 			@* Show the image of the dish *@
 			<img src="@dishes[i].Image" class="img-fluid mx-auto" style="max-width: 530px; max-height: 400px;" alt="@dishes[i].Name" />
+			@if (Liked)
+			{
+				<!-- Show "Liked" over the image when liked -->
+				<div class="position-absolute top-right" style="border:solid; border-width: 12px; border-color: limegreen; color: limegreen; font-size: 50px; font-weight:900;">
+					<p>FAVED</p>
+				</div>
+			}
+			else if (Disliked)
+			{
+				<!-- Show "Disliked" over the image when disliked -->
+				<div class="position-absolute top-left" style="border:solid; border-width: 12px; border-color: red; color: red; font-size: 50px; font-weight:900;">
+					<p>NOPE</p>
+				</div>
+			}
 		}
 		</div>
 
@@ -39,8 +53,8 @@ You can filter for a specific item, for example rice or pasta, as well as choosi
 				</button>
 			</div>
 			<div class="col-2" style="padding-block: 0px 0px;">
-				<button style="width: 100px; background: none; border: none;">
-					<img src="http://sebh.dk/wp-content/uploads/2024/04/GreenHeart.png" class="img-fluid" alt="Like" />
+				<button style="width: 100px; background: none; border: none;" @onclick="Like">
+					<img src="http://sebh.dk/wp-content/uploads/2024/04/GreenHeart.png" class="img-fluid" style="color: limegreen;" alt="Like" />
 				</button>
 			</div>
 		</div>
@@ -51,6 +65,8 @@ You can filter for a specific item, for example rice or pasta, as well as choosi
 @code {
 	private int i;
 	private Dishes[]? dishes;
+	private bool Liked = false;
+	private bool Disliked = false;
 
 	public void GetDishes()
 	{
@@ -64,14 +80,25 @@ You can filter for a specific item, for example rice or pasta, as well as choosi
 		i = 0;
 	}
 
-	private void Like()
+	private async void Like()
 	{
+		Liked = true;
+		StateHasChanged(); // Notify Blazor that the state has changed
+		await Task.Delay(800); // Asynchronously wait for 2 seconds
+		Liked = false;
 		GetNextDish();
+		StateHasChanged(); // Notify Blazor that the state has changed
+
 	}
 
-	private void Dislike()
+	private async void Dislike()
 	{
+		Disliked = true;
+		StateHasChanged(); // Notify Blazor that the state has changed
+		await Task.Delay(500); // Asynchronously wait for 2 seconds
+		Disliked = false;
 		GetNextDish();
+		StateHasChanged(); // Notify Blazor that the state has changed
 	}
 
 	private void GetNextDish()
