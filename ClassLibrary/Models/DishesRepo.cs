@@ -1,17 +1,20 @@
 ﻿using System.Linq;
 using System.Data.SqlClient;
+using FlavorMatch.Shared;
+using System.Security.Cryptography.X509Certificates;
 
 namespace FlavorMatch.Shared.Models
 {
 	public class DishesRepo
 	{
-		private string connectionString = "Server=np:\\\\.\\pipe\\LOCALDB#9EE4EA0F\\tsql\\query;Database=FlavorMatchAPI;Integrated Security=true;";
-
-        //Get all dishes
-        public List<Dishes> GetDishes()
+		DatabaseConnection db = new DatabaseConnection();
+		//Get all dishes
+		public List<Dishes> GetDishes()
         {
+			db.GetDatabaseServer();
+			var connectionStringAPI = db.connectionStringAPI;
 			List<Dishes> dishes = new List<Dishes>();
-			using (SqlConnection connection = new SqlConnection(connectionString))
+			using (SqlConnection connection = new SqlConnection(connectionStringAPI))
 			{
 				connection.Open();
 				string sql = "SELECT * FROM Dishes";
@@ -39,8 +42,10 @@ namespace FlavorMatch.Shared.Models
 
         public async Task<List<Dishes>> GetAllDishesAsync()
         {
-            List<Dishes> dishes = new List<Dishes>();
-            using (SqlConnection conn = new SqlConnection(connectionString))
+			db.GetDatabaseServer();
+			var connectionStringAPI = db.connectionStringAPI;
+			List<Dishes> dishes = new List<Dishes>();
+            using (SqlConnection conn = new SqlConnection(connectionStringAPI))
             {
                 await conn.OpenAsync();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Dishes", conn);

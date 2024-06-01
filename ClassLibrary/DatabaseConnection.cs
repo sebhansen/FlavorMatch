@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,8 @@ namespace FlavorMatch.Shared
 	public class DatabaseConnection
 	{
 		public string server = "";
+		public string connectionStringAPI { get; set; }
+		public string connectionStringIdentity { get; set; }
 
 		// Grab the database server from the DatabaseServer.txt file
 		public string GetDatabaseServer()
@@ -37,6 +40,8 @@ namespace FlavorMatch.Shared
 				Console.WriteLine("The file could not be read:");
 				Console.WriteLine(e.Message);
 			}
+			connectionStringAPI = server + ";Database=FlavorMatchAPI;Integrated Security=true;";
+			connectionStringIdentity = server + ";Database=FlavorMatch;Integrated Security=true;";
 			return server;
 		}
 	}

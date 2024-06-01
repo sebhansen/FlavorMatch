@@ -1,1 +1,1 @@
-np:\\.\pipe\LOCALDB#0FEC28C5\tsql\query 
+Server=np:\\.\pipe\LOCALDB#BF856C1E\tsql\query 
