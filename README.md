@@ -13,7 +13,7 @@ FlavorMatch is a fun project I wanted to make! It's like Tinder, but for finding
 - **Save Your Faves:** Found a recipe you adore? Save it to your favorites so you can cook it again and again.
 
 
-<img src="https://github.com/sebhansen/FlavorMatch/assets/70775633/23c246f9-5409-47c1-9ee1-0227aa306b80" width="350" height="430" />
+<img src="![FlavorMatch-GIF](https://github.com/sebhansen/FlavorMatch/assets/70775633/432879fb-2011-4442-9e8c-4d45e9cc1d53)" width="350" height="430" />
 
 ## Getting Started
 Ready to dive into FlavorMatch? Awesome! Just fire up the app, create your profile (don't worry, we won't judge your love for cheese), and start clicking!
