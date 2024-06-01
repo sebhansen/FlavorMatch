@@ -9,11 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 //Database server
 DatabaseConnection db = new DatabaseConnection();
 db.GetDatabaseServer();
-var ConnectionStringServer = db.server;
-
-//api connection string
-var apiConnectionStringEnd = builder.Configuration.GetConnectionString("APIConnectionString");
-var apiFullConnectionString = "Server=" + ConnectionStringServer + apiConnectionStringEnd;
+var connectionStringAPI = db.connectionStringAPI;
 
 //Using Azure Key Vault to store the connection string
 //var apiVaultURL = new Uri("https://flavormatch.vault.azure.net/");
@@ -28,7 +24,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<FlavorMatchAPIContext>(options =>
-    options.UseSqlServer(apiFullConnectionString));
+    options.UseSqlServer(connectionStringAPI));
 
 builder.Services.AddCors(options =>
 {

@@ -14,20 +14,14 @@ var builder = WebApplication.CreateBuilder(args);
 //Database server
 DatabaseConnection db = new DatabaseConnection();
 db.GetDatabaseServer();
-var ConnectionStringServer = db.server;
-
-//api connection string
-var apiConnectionStringEnd = builder.Configuration.GetConnectionString("APIConnectionString");
-var apiFullConnectionString = "Server=" + ConnectionStringServer + apiConnectionStringEnd;
+var connectionStringIdentity = db.connectionStringIdentity;
+var connectionStringAPI = db.connectionStringAPI;
 
 //var APIVaultURL = new Uri("https://flavormatch.vault.azure.net/");
 //var secretAPIClient = new SecretClient(APIVaultURL, new DefaultAzureCredential());
 //KeyVaultSecret APISecret = secretAPIClient.GetSecret("FlavorMatchAPISecret");
 //string apiConnectionString = APISecret.Value;
 
-//normal connection string
-var idConnectionStringEnd = builder.Configuration.GetConnectionString("IdentityConnectionString");
-var idFullConnectionString = "Server=" + ConnectionStringServer + idConnectionStringEnd;
 
 //var vaultURL = new Uri("https://flavormatch.vault.azure.net/");
 //var secretClient = new SecretClient(vaultURL, new DefaultAzureCredential());
@@ -51,9 +45,9 @@ builder.Services.AddAuthentication(options =>
     .AddIdentityCookies();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(idFullConnectionString));
+    options.UseSqlServer(connectionStringIdentity));
 builder.Services.AddDbContext<FlavorMatchAPIContext>(options =>
-        options.UseSqlServer(apiFullConnectionString));
+        options.UseSqlServer(connectionStringAPI));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)

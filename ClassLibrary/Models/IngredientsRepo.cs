@@ -5,11 +5,12 @@ namespace FlavorMatch.Shared.Models
 {
     public class IngredientsRepo
 	{
-		private string connectionString = "Server=np:\\\\.\\pipe\\LOCALDB#9EE4EA0F\\tsql\\query;Database=FlavorMatchAPI;Integrated Security=true;";
-
+		DatabaseConnection db = new DatabaseConnection();
 		//Get all ingredients
 		public List<Ingredients> GetIngredients()
 		{
+			db.GetDatabaseServer();
+			var connectionString = db.connectionStringAPI;
 			List<Ingredients> ingredients = new List<Ingredients>();
 			using (SqlConnection connection = new SqlConnection(connectionString))
 			{
