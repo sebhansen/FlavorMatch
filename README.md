@@ -13,6 +13,7 @@ FlavorMatch is a fun project I wanted to make! It's like Tinder, but for finding
 - **Save Your Faves:** Found a recipe you adore? Save it to your favorites so you can cook it again and again.
 
 
+This was supposed to be a gif:
 <img src="![FlavorMatch-GIF](https://github.com/sebhansen/FlavorMatch/assets/70775633/c80551a3-ce3b-4e93-8c36-4aac72049e0c)" width="350" height="430" />
 
 ## Getting Started
