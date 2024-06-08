@@ -11,10 +11,8 @@ FlavorMatch is a fun project I wanted to make! It's like Tinder, but for finding
 - **Discover Yummy Dishes:** It's as easy as pressing the heart for a recipe you love, the X for one that's not your taste.
 - **Filter Ingredients:** Got random stuff in your pantry you want to use? No worries! Use FlavorMatch's filter system and find recipes you can make with what you've got.
 - **Save Your Faves:** Found a recipe you adore? Save it to your favorites so you can cook it again and again.
-
-
-This was supposed to be a gif:
-<img src="![FlavorMatch-GIF](https://github.com/sebhansen/FlavorMatch/assets/70775633/c80551a3-ce3b-4e93-8c36-4aac72049e0c)" width="350" height="430" />
+  
+![](https://github.com/sebhansen/FlavorMatch/assets/70775633/ccffc59a-7568-4440-a1e5-23ac6732abbe)
 
 ## Getting Started
 Ready to dive into FlavorMatch? Awesome! Just fire up the app, create your profile (don't worry, we won't judge your love for cheese), and start clicking!
