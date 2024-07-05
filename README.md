@@ -27,3 +27,4 @@ Got ideas to make FlavorMatch even more awesome? Spotted a bug? We want to hear 
 ## WIP
 Work in Progress. My idea with this is to at some point in the future port the frontend to Angular. Maybe even as an app at some point, who knows.
 Currently only works on my local database as my money on Azure ran out :/
+(I will be working "full time" on this after my vacation (10-17th of june), so expect a lot of progress!)
