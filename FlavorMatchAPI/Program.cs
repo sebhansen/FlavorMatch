@@ -26,6 +26,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<FlavorMatchAPIContext>(options =>
     options.UseSqlServer(connectionStringAPI));
 
+builder.Services.AddScoped<IUserPreferencesRepo, UserPreferencesRepo>();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",
