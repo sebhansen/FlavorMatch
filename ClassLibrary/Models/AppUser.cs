@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FlavorMatch.Shared.Models
 {
-    public class User
+    public class AppUser
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -16,7 +16,7 @@ namespace FlavorMatch.Shared.Models
         //Filters
         public List<Ingredients> Filters { get; set; }
 
-        public User() 
+        public AppUser() 
         {
             Favourites = new List<Dishes>();
             Filters = new List<Ingredients>();

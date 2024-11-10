@@ -2,6 +2,9 @@
 @using System.Linq;
 @using FlavorMatch.Shared.Models;
 @using Microsoft.EntityFrameworkCore;
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+@using Microsoft.AspNetCore.Components.Authorization
 @inject FlavorMatchAPIContext DbContext
 @page "/Filter"
 
@@ -64,7 +67,6 @@ else
 @code {
     IngredientsRepo ingredientsRepo = new IngredientsRepo();
     private List<Ingredients>? Ingredients;
-    
 
 	protected override void OnInitialized()
 	{

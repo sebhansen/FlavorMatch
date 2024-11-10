@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlavorMatch", "FlavorMatch\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlavorMatch.Shared", "ClassLibrary\FlavorMatch.Shared.csproj", "{CFFA7701-6C23-4D41-B11E-7DDB676BDAED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlavorMatchAPI", "FlavorMatchAPI\FlavorMatchAPI.csproj", "{86B332E5-DFA8-4D00-84A4-0A986E289A1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlavorMatchAPI", "FlavorMatchAPI\FlavorMatchAPI.csproj", "{86B332E5-DFA8-4D00-84A4-0A986E289A1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

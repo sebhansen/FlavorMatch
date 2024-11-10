@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace FlavorMatch.Shared.Models
 {
-    public class UserRepo
+    public class AppUserRepo
 	{
-		public UserRepo() 
+		public AppUserRepo() 
 		{
 		}
 
-		public User GetUser(int id)
+		public AppUser GetUser(int id)
 		{
-			return new User();
+			return new AppUser();
 		}
 
 		//Take ingredients to saved list

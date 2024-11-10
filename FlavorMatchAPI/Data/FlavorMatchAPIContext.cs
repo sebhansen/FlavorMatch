@@ -14,5 +14,19 @@ using FlavorMatch.Shared.Models;
 
         public DbSet<FlavorMatch.Shared.Models.Dishes> Dishes { get; set; } = default!;
 
-public DbSet<FlavorMatch.Shared.Models.Ingredients> Ingredients { get; set; } = default!;
-    }
+        public DbSet<FlavorMatch.Shared.Models.Ingredients> Ingredients { get; set; } = default!;
+
+		public DbSet<FlavorMatch.Shared.Models.UserPreferences> UserPreferences { get; set; }
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			base.OnModelCreating(modelBuilder);
+
+			modelBuilder.Entity<UserPreferences>()
+				.HasKey(up => up.Id);
+
+			modelBuilder.Entity<UserPreferences>()
+				.HasIndex(up => new { up.UserId, up.IngredientId })
+				.IsUnique();
+		}
+}
